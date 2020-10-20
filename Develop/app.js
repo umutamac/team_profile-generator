@@ -14,7 +14,7 @@ const empType = {
     type: 'list',
     message: "Type of employee:",
     name: "position",
-    choices: ["Manager","Engineer","Intern"],
+    choices: ["Manager","Engineer","Intern"]
 }
 const commonInfo = [
     {
@@ -41,30 +41,30 @@ async function createEmployeeProfile() {
         const employeeType = await inquirer.prompt(empType);
 
         if (employeeType.role == "Manager") { // if manager -> ask for office number
-            let officeInqury = await inquirer.prompt([{
+            let specialInqury = await inquirer.prompt([{
                 type: "input",
                 name: "office",
                 message: "Office Number:"
             }])
-            newEmployee = new Manager(commonInformation.empName, commonInformation.empID, commonInformation.empEmail, officeInqury.office);
+            newEmployee = new Manager(commonInformation.empName, commonInformation.empID, commonInformation.empEmail, specialInqury.office);
             employees.push(newEmployee);  
         }
         else if (employeeType.role == "Engineer") { // if engineer -> ask for github
-            let githubInqury = await inquirer.prompt([{
+            let specialInqury = await inquirer.prompt([{
                 type: "input",
                 name: "gitHub",
                 message: "GitHub username:"
             }])
-            newEmployee = new Engineer(commonInformation.empName, commonInformation.empID, commonInformation.empEmail, githubInqury.gitHub);
+            newEmployee = new Engineer(commonInformation.empName, commonInformation.empID, commonInformation.empEmail, specialInqury.gitHub);
             employees.push(newEmployee);  
         }
         else { // only other option is intern -> ask for school
-            let schoolInquiry = await inquirer.prompt([{
+            let specialInqury = await inquirer.prompt([{
                 type: "input",
                 name: "school",
                 message: "Intern's school:"
             }])
-            newEmployee = new Intern(commonInformation.empName, commonInformation.empID, commonInformation.empEmail, schoolInquiry.school);
+            newEmployee = new Intern(commonInformation.empName, commonInformation.empID, commonInformation.empEmail, specialInqury.school);
             employees.push(newEmployee);
         }
 
