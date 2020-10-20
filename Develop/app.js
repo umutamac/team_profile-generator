@@ -16,8 +16,7 @@ const empType = {
     name: "position",
     choices: ["Manager","Engineer","Intern"]
 }
-const commonInfo = [
-    {
+const commonInfo = [{
         type: "input",
         message: "Employee name:",
         name: "employeeName"
@@ -29,8 +28,7 @@ const commonInfo = [
         type: "input",
         message: "Employee email:",
         name: "employeeEmail"
-    }
-]
+    }]
 
 const employees = [];
 let newEmployee;
@@ -40,7 +38,7 @@ async function createEmployeeProfile() {
         const commonInformation = await inquirer.prompt(commonInfo);
         const employeeType = await inquirer.prompt(empType);
 
-        if (employeeType.role == "Manager") { // if manager -> ask for office number
+        if (employeeType.position == "Manager") { // if manager -> ask for office number
             let specialInqury = await inquirer.prompt([{
                 type: "input",
                 name: "office",
@@ -49,7 +47,7 @@ async function createEmployeeProfile() {
             newEmployee = new Manager(commonInformation.empName, commonInformation.empID, commonInformation.empEmail, specialInqury.office);
             employees.push(newEmployee);  
         }
-        else if (employeeType.role == "Engineer") { // if engineer -> ask for github
+        else if (employeeType.position == "Engineer") { // if engineer -> ask for github
             let specialInqury = await inquirer.prompt([{
                 type: "input",
                 name: "gitHub",
