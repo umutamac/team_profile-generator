@@ -11,9 +11,10 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const empType = {
-    type = "list",
-    name = "position",
-    choices = ["Manager","Engineer","Intern"]
+    type: 'list',
+    message: "Type of employee:",
+    name: "position",
+    choices: ["Manager","Engineer","Intern"],
 }
 const commonInfo = [
     {
