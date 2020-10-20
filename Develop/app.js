@@ -35,6 +35,7 @@ let newEmployee;
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 async function createEmployeeProfile() {
+    try{
         const commonInformation = await inquirer.prompt(commonInfo);
         const employeeType = await inquirer.prompt(empType);
 
@@ -66,10 +67,13 @@ async function createEmployeeProfile() {
             employees.push(newEmployee);
         }
 
-    // After the user has input all employees desired, call the `render` function (required
-    // above) and pass in an array containing all employee objects; the `render` function will
-    // generate and return a block of HTML including templated divs for each employee!
-    fs.writeFileSync(outputPath, render(employees));
+        // After the user has input all employees desired, call the `render` function (required
+        // above) and pass in an array containing all employee objects; the `render` function will
+        // generate and return a block of HTML including templated divs for each employee!
+        fs.writeFileSync(outputPath, render(employees));
+    } catch(err) {
+        console.log(err);
+    }
 }
 createEmployeeProfile();
 
